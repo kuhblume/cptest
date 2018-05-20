@@ -14,7 +14,6 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
         $this->call('GroupsTableSeeder');
-        $this->call('ImagesTableSeeder');
         $this->call('JoinsTableSeeder');
         $this->call('MessagesTableSeeder');
         $this->call('UsersTableSeeder');

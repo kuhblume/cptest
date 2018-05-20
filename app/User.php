@@ -27,13 +27,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function Joins(){
-        return $this->belongsToMany('App\Join');
-    }
+//    public function Joins(){
+//        return $this->belongsToMany('App\Join');
+//    }
     public function groups(){
-        return $this->belongsToMany('App\Group');
+        return $this->belongsToMany('App\Group', 'joins', 'user_id', 'group_id');
     }
-    public  function messages(){
-        return $this->hasMany('App\Message');
-    }
+//    public  function messages(){
+//        return $this->hasMany('App\Message');
+//    }
 }

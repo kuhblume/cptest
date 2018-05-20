@@ -21,13 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 //messageルート/////////////////////////////////////////////////////////////////
-Route::get('/message', function () {
-    return view('message');
-});
-
-Route::get('message','GroupController@show');
+Route::get('/message','GroupController@show');
 
 //message_roomsルート///////////////////////////////////////////////////////////
-Route::get('/message_rooms', function () {
-    return view('message_rooms');
-});
+Route::get('/message_rooms','MessageController@show');

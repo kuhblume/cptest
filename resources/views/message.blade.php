@@ -7,9 +7,9 @@
 </head>
 <body>
     @foreach($groups as $group)
-{{--        <li>{{ $group->group_name }}</li>--}}
+        <li><a href='message_rooms'>{{$group->group_name}}</a></li>
+        <hr>
     @endforeach
-{{$groups}}
     <?php
     if (Auth::check()){
         echo '<h2>ようこそ</h2>';
@@ -19,4 +19,7 @@
         echo '<h2>ログイン</h2>';
     }
     ?>
+
+
+
 </body>

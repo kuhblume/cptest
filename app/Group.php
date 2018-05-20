@@ -6,13 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Group extends Model
 {
-    public function joins(){
-        return $this->belongsToMany('App\Join');
-    }
-    public function users(){
-        return $this->belongsToMany('App\User');
-    }
-    public function messages(){
-        return $this->hasMany('App\Message');
-    }
+    protected $table = "groups";
+//    public function joins(){
+//        return $this->belongsToMany('App\Join','joins','group_name','user_id');
+//    }
+//    public function users(){
+//        return $this->belongsToMany('App\User');
+//    }
+//    public function messages(){
+//        return $this->hasMany('App\Message');
+//    }
 }
