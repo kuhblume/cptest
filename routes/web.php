@@ -23,5 +23,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 //messageルート/////////////////////////////////////////////////////////////////
 Route::get('/message','GroupController@show');
 
-//message_roomsルート///////////////////////////////////////////////////////////
+//message_roomsルート///////////////////////////////////////////////////////////{id?}は任意のパラメーター
 Route::get('/message_rooms','MessageController@show');
+Route::post('/message_rooms','MessageController@create');
+
+
+//create_message_roomルート/////////////////////////////////////////////////////
+Route::get('/create_message_room', function () {return view('create_message_room');});

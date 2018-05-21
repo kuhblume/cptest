@@ -7,19 +7,8 @@
 </head>
 <body>
     @foreach($groups as $group)
-        <li><a href='message_rooms'>{{$group->group_name}}</a></li>
+        <li><a href='message_rooms?{{$group->id}}'>{{$group->group_name}}</a></li>
         <hr>
     @endforeach
-    <?php
-    if (Auth::check()){
-        echo '<h2>ようこそ</h2>';
-        $user = Auth::user();
-        echo $user->name,"さん</br>";
-    }else{
-        echo '<h2>ログイン</h2>';
-    }
-    ?>
-
-
-
+    <a href="create_message_room">ルーム作成</a>
 </body>
