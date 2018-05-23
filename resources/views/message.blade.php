@@ -7,7 +7,7 @@
 </head>
 <body>
     @foreach($groups as $group)
-        <li><a href='message_rooms?{{$group->id}}'>{{$group->group_name}}</a></li>
+        <li><a href='message_rooms?id={{$group->id}}'>{{$group->group_name}}</a></li>
         <hr>
     @endforeach
     <a href="create_message_room">ルーム作成</a>

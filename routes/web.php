@@ -24,8 +24,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/message','GroupController@show');
 
 //message_roomsルート///////////////////////////////////////////////////////////{id?}は任意のパラメーター
-Route::get('/message_rooms','MessageController@show');
-Route::post('/message_rooms','MessageController@create');
+Route::get('/message_rooms={id?}','MessageController@show');
+Route::post('/message_rooms={id?}','MessageController@create');
 
 
 //create_message_roomルート/////////////////////////////////////////////////////

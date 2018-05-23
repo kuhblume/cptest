@@ -9,16 +9,15 @@ use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
-    public function index($id){
+    public function index(){
     }
-    public function  show(){//
+    public function  show($id){//
         $messages = User::find(Auth::user())->first()->messages;
-        $group_message = '';
         return view('message_rooms',['messages'=>$messages]);
     }
     public  function  create(Request $request){//storeでもよさそう
         $create_message = new Message;
-        $create_message->group_id = 77777;
+        $create_message->group_id = $request->input('room_id');
         $create_message->user_id = Auth::user()->id;
         $create_message->message_body = $request->input('post_body');
         $create_message->save();

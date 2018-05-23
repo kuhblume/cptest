@@ -13,6 +13,7 @@
 <form role="form" method="post" action="message_rooms">
     {{-- CSRF対策 --}}
     <input type="hidden" name="_token" value="{{csrf_token()}}">
+    <input type="hidden" name="room_id" value=77777>
     <input type="text" name="post_body" placeholder="名前を文字を入力してください" required autofocus>
     <button type="submit">送信</button>
 </form>

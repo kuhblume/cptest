@@ -31,9 +31,11 @@ class GroupController extends Controller
 
 //        $joins = Join::where('user_id', Auth::user()->id)->get();//join::ログイン中のユーザーの所属を取得(複数あり)
 //        return view('message',['joins'=>$joins]);
+          if(isset(Auth::user()->id)) {
+              $groups = User::find(Auth::user())->first()->groups;//userを一つだけ取得するためにfirstを使った
+              return view('message',['groups'=>$groups]);
+          }else{
 
-          $groups = User::find(Auth::user())->first()->groups;//userを一つだけ取得するためにfirstを使った
-
-          return view('message',['groups'=>$groups]);
+          }
     }
 }
