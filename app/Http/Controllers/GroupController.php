@@ -19,16 +19,13 @@ class GroupController extends Controller
     public function show(){
 //        $users = User::find(Auth::user()->id);//ログインしているユーザーのユーザーテーブルを取得---ここでは不要だった
 //        $joins = DB::table('joins')->where('user_id',Auth::user()->id)->get();//DBクラスを使った記述
-
 //        if (isset(Auth::user()->id)) {//非ログイン時のエラーを回避(null時に処理を行わない)
 //            $joins = Join::where('user_id', Auth::user()->id)->get();
 //            return view('message', ['groups' => $joins]);
 //        } else {
 //            //非ログイン時の処理
 //        }
-
 //        return view('message',['joins'=>Join::with('groups')->get()]);
-
 //        $joins = Join::where('user_id', Auth::user()->id)->get();//join::ログイン中のユーザーの所属を取得(複数あり)
 //        return view('message',['joins'=>$joins]);
           if(isset(Auth::user()->id)) {

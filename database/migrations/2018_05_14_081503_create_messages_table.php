@@ -21,7 +21,6 @@ class CreateMessagesTable extends Migration
             $table->string('message_body');
         });
     }
-
     /**
      * Reverse the migrations.
      *
