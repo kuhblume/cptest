@@ -7,7 +7,6 @@ use App\Group;
 use App\Join;
 use App\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class GroupController extends Controller
 {

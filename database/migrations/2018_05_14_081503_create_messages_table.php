@@ -19,6 +19,7 @@ class CreateMessagesTable extends Migration
             $table->Integer('group_id');
             $table->Integer('user_id');
             $table->string('message_body');
+            $table->string('image_path')->nullable(false)->change();
         });
     }
     /**

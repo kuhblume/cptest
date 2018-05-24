@@ -18,7 +18,6 @@ class CreateJoinsTable extends Migration
             $table->timestamps();
             $table->Integer('group_id');
             $table->Integer('user_id');
-
         });
     }
 
