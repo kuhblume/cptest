@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Message;
+use App\Group;
 use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
@@ -12,8 +13,8 @@ class MessageController extends Controller
     public function show($id)
     {//
         if(isset(Auth::user()->id)) {
-//            $messages = User::find(Auth::user())->first()->messages;//ユーザーの持つすべてのメッセージを取得
-            $messages = User::find(Auth::user())->first()->messages->where('group_id',$id);//whereでさらに絞り込む///messages_tableの持つgroup_idが$idと一致したもののみ取得
+//            $messages = User::find(Auth::user())->first()->messages->where('group_id',$id);//whereでさらに絞り込む///messages_tableの持つgroup_idが$idと一致したもののみ取得->ユーザーからさらに絞ったためユーザー一致かつグループ一致となってしまった
+            $messages = Group::find($id)->messages;//groupからリレーションを使いmessagesを呼び出す
             return view('message_rooms', ['messages' => $messages],['group_id'=>$id]);
         }
     }
