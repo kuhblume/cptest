@@ -30,3 +30,4 @@ Route::delete('/message_rooms/{id}','MessageController@delete');
 //create_message_roomルート/////////////////////////////////////////////////////
 Route::post('/create_message_room','CreateRoomController@create');
 Route::get('/create_message_room','CreateRoomController@show');
+//Route::post('/create_message_room','CreateRoomController@val');

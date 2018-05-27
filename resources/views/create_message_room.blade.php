@@ -18,13 +18,14 @@
 create_message_room:新規ルーム作成用ページ
 <form role="form" method="post" action="create_message_room">
     <input type="hidden" name="_token" value="{{csrf_token()}}">{{-- CSRF対策 --}}
+    <input type="hidden" name="users[]" value="{{Auth::user()->id}}">
     @foreach($users as $user)
-        @if(Auth::user()->id == $user->id)
-            <input type="hidden" name="users[]" value="{{Auth::user()->id}}">
+        @if(Auth::user()->id == $user->id){{--自分以外を表示する。forですべてをifに通すのは効率悪い？？注：自分を配列の一番最初にもっていったほうが後の処理が楽、現在のコントローラはそうしないと望まない結果が出る--}}
             @else
             <li><input type="checkbox" name="users[]" value="{{$user->id}}">{{$user->name}}</li>{{--フォロー中のユーザー、テスト時は全ユーザー、配列--}}
         @endif
     @endforeach
-    <button type="submit">送信</button>
+    <button type="submit">ルーム作成</button>
+    <p>{{$notice}}</p>
 </form>
 </body>
