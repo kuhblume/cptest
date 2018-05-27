@@ -6,6 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
+<li>あなたの参加しているルーム</li><hr>
     @foreach($groups as $group)
         <li><a href='message_rooms/{{$group->id}}'>{{$group->group_name}}</a></li>
         <hr>

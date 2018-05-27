@@ -11,7 +11,7 @@ class CreateRoomController extends Controller
 {
     public function show(){//招待可能なユーザーを取得、bladeでチェックボックスとともに一覧表示
         $users = User::all();
-        return view('create_message_room',['users' => $users],['notice'=>'test']);
+        return view('create_message_room',['users' => $users]);
     }
     public function create(Request $request)//チェックボックスをユーザーを取得しforで回してそれぞれデータベースに挿入
     {//storeでもよさそう
@@ -24,7 +24,7 @@ class CreateRoomController extends Controller
             //誰も選択していないときの処理////バリデーションではじくほうがいいかもしれない
             return redirect('message');
         }else{
-            $new_group->group_name ='グループ';//ここでグループ名決定ページに飛ばせばいいのでは
+            $new_group->group_name =$request->input('room_name');//ここでグループ名決定ページに飛ばせばいいのでは
             $new_group->save();
         }
         foreach ($join_users as $join_user){
@@ -35,7 +35,7 @@ class CreateRoomController extends Controller
         }
         return redirect('message');
     }
-//    public  function  val(Request $request){
+//    public  function  val(Request $request){//
 //        $validate_rule = [
 //            'users[]' => 'unique:joins,user_id,joins,group_id'
 //        ];

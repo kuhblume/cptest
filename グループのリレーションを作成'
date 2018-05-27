@@ -1,7 +1,0 @@
-[master d84b826] '2#ユーザー-
- 13 files changed, 75 insertions(+), 145 deletions(-)
- rewrite app/Group.php (72%)
- delete mode 100644 app/Http/Controllers/ImageController.php
- delete mode 100644 app/Image.php
- delete mode 100644 database/migrations/2018_05_14_081515_create_images_table.php
- delete mode 100644 database/seeds/ImagesTableSeeder.php

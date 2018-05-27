@@ -5,17 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 </head>
 <body>
-{{--@foreach($messages as $message)--}}
-    {{--<li>{{$message}}</li>--}}
-    {{--<hr>--}}
-{{--@endforeach--}}
-{{--<form role="form" method="post" action="message_rooms">--}}
-     {{--CSRF対策 --}}
-    {{--<input type="hidden" name="_token" value="{{csrf_token()}}">--}}
-    {{--<input type="text" name="post_body" placeholder="名前を文字を入力してください" required autofocus>--}}
-    {{--<button type="submit">送信</button>--}}
-{{--</form>--}}
-create_message_room:新規ルーム作成用ページ
+<li>招待するユーザー</li>
+<li>※一人だけ選択すると個人チャットになり、グループ名は固定されます</li>
+<hr>
 <form role="form" method="post" action="create_message_room">
     <input type="hidden" name="_token" value="{{csrf_token()}}">{{-- CSRF対策 --}}
     <input type="hidden" name="users[]" value="{{Auth::user()->id}}">
@@ -25,7 +17,11 @@ create_message_room:新規ルーム作成用ページ
             <li><input type="checkbox" name="users[]" value="{{$user->id}}">{{$user->name}}</li>{{--フォロー中のユーザー、テスト時は全ユーザー、配列--}}
         @endif
     @endforeach
+    <hr>
+    <li>ルーム名：<input type="form" name="room_name"></li>
+    <hr>
     <button type="submit">ルーム作成</button>
-    <p>{{$notice}}</p>
 </form>
 </body>
+
+{{--現状はすべてのユーザーがここに表示される--}}
