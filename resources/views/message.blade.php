@@ -10,5 +10,7 @@
         <li><a href='message_rooms/{{$group->id}}'>{{$group->group_name}}</a></li>
         <hr>
     @endforeach
+    <hr>
+    <hr>
     <a href="create_message_room">ルーム作成</a>
 </body>

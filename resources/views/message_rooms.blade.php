@@ -26,6 +26,7 @@
     <input type="text" name="message_body" placeholder="名前を文字を入力してください" required autofocus>
     <button type="submit">送信</button>
 </form>
+{{--ルーム退出ボタン未作成--}}
 </body>
 
 {{--actionの意味とは--}}

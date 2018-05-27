@@ -28,4 +28,5 @@ Route::post('/message_rooms/{id}','MessageController@create');
 Route::get('/message_rooms/{id}','MessageController@show');
 Route::delete('/message_rooms/{id}','MessageController@delete');
 //create_message_roomルート/////////////////////////////////////////////////////
-Route::get('/create_message_room', function () {return view('create_message_room');});
+Route::post('/create_message_room','CreateRoomController@create');
+Route::get('/create_message_room','CreateRoomController@show');

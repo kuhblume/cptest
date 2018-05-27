@@ -29,9 +29,9 @@ class GroupController extends Controller
 //        return view('message',['joins'=>$joins]);
           if(isset(Auth::user()->id)) {
               $groups = User::find(Auth::user())->first()->groups;//userを一つだけ取得するためにfirstを使った
-              return view('message',['groups'=>$groups]);
+              return view('message',['groups'=>$groups]);//取り出した一つのユーザー（ログイン中のユーザー）の所属するグループを取得
           }else{
-
+            //非ログイン時の処理
           }
     }
 }

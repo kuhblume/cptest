@@ -16,4 +16,15 @@
     {{--<button type="submit">送信</button>--}}
 {{--</form>--}}
 create_message_room:新規ルーム作成用ページ
+<form role="form" method="post" action="create_message_room">
+    <input type="hidden" name="_token" value="{{csrf_token()}}">{{-- CSRF対策 --}}
+    @foreach($users as $user)
+        @if(Auth::user()->id == $user->id)
+            <input type="hidden" name="users[]" value="{{Auth::user()->id}}">
+            @else
+            <li><input type="checkbox" name="users[]" value="{{$user->id}}">{{$user->name}}</li>{{--フォロー中のユーザー、テスト時は全ユーザー、配列--}}
+        @endif
+    @endforeach
+    <button type="submit">送信</button>
+</form>
 </body>
