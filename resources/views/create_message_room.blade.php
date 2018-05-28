@@ -3,11 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-<li>招待するユーザー</li>
-<li>※一人だけ選択すると個人チャットになり、グループ名は固定されます</li>
-<hr>
+<nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+<h1>招待するユーザー</h1>
+<p>※一人だけ選択すると個人チャットになり、グループ名は固定されます</p>
+</nav>
+<br>
 <form role="form" method="post" action="create_message_room">
     <input type="hidden" name="_token" value="{{csrf_token()}}">{{-- CSRF対策 --}}
     <input type="hidden" name="users[]" value="{{Auth::user()->id}}">

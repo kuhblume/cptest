@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Join;
 use App\Group;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class CreateRoomController extends Controller
@@ -35,11 +36,14 @@ class CreateRoomController extends Controller
         }
         return redirect('message');
     }
-//    public  function  val(Request $request){//
-//        $validate_rule = [
-//            'users[]' => 'unique:joins,user_id,joins,group_id'
-//        ];
-//        $this->validate($request,$validate_rule);
-//        return view('create_message_room',['notice'=>'aaaaaa']);
-//    }
+    public function quitRoom(Request $request){
+//        Join::destroy($request->input('group_id'));
+//        Join::destroy(User::where('group_id','group_id')->id);
+//        Join::destroy(Group::find($request->input('group_id'))->first()->join->where('',Auth::user()));
+        // クエリ条件にマッチした最初のレコード取得
+        Join::where('user_id', Auth::user()->id)->where('group_id',$request->input('group_id'))->first()->delete();
+        return redirect('message/');
+    }
 }
+//            $messages = User::find(Auth::user())->first()->messages->where('group_id',$id);//whereでさらに絞り込む///messages_tableの持つgroup_idが$idと一致したもののみ取得->ユーザーからさらに絞ったためユーザー一致かつグループ一致となってしまった
+//ぐるーぷー＞じょいん

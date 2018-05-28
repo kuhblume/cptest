@@ -26,7 +26,8 @@ Route::get('/message','GroupController@show');
 //message_roomsルート///////////////////////////////////////////////////////////{id?}は任意のパラメーター
 Route::post('/message_rooms/{id}','MessageController@create');
 Route::get('/message_rooms/{id}','MessageController@show');
-Route::delete('/message_rooms/{id}','MessageController@delete');
+Route::delete('/message_rooms/{id}','MessageController@deleteMessage');
+Route::delete('/message_rooms/{id}','CreateRoomController@quitRoom');
 //create_message_roomルート/////////////////////////////////////////////////////
 Route::post('/create_message_room','CreateRoomController@create');
 Route::get('/create_message_room','CreateRoomController@show');

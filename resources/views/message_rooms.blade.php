@@ -3,21 +3,33 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-</head>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet"></head>
 <body>
+<nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+    退出処理未実装
+    <form role="form" method="post" action="message_rooms">{{--退出処理＞joinから二つのidが一致するレコードを消せばいい？--}}
+        @method('delete'){{--formのpostからlaravelの機能を使ってdeleteに結び付ける--}}
+        <input type="hidden" name="_token" value="{{csrf_token()}}">{{-- CSRF対策 --}}
+        <input type="hidden" name="group_id" value="{{$group_id}}">
+        <button type="submit">退出{{$group_id}}</button>
+    </form>
+</nav>
+<br>
 @foreach($messages as $message)
-    <li>{{$message}}</li>
-    <li>{{mb_convert_encoding($message->message_body, "utf-8", "auto")}}
         @if($message->user_id == Auth::user()->id)
-        <form action="message_rooms" method="post">
-            @method('delete'){{--formのpostからlaravelの機能を使ってdeleteに結び付ける--}}
-            <input type="hidden" name="_token" value="{{csrf_token()}}">{{-- CSRF対策 --}}
-            <input type="hidden" name="message_id" value="{{$message->id}}">
-            <input type="hidden" name="group_id" value="{{$group_id}}">
-            <button type="submit">削除</button>
-        </form>
+            <li class="">{{$message}}</li>
+            <li>{{mb_convert_encoding($message->message_body, "utf-8", "auto")}}
+            <form action="message_rooms" method="post">
+                @method('delete'){{--formのpostからlaravelの機能を使ってdeleteに結び付ける--}}
+                <input type="hidden" name="_token" value="{{csrf_token()}}">{{-- CSRF対策 --}}
+                <input type="hidden" name="message_id" value="{{$message->id}}">
+                <input type="hidden" name="group_id" value="{{$group_id}}">
+                <button type="submit">削除</button>
+            </form>
+        @else
+            <li style="text-align: right">{{$message}}</li>
+            <li style="text-align: right">{{mb_convert_encoding($message->message_body, "utf-8", "auto")}}</li>{{-- ここのエンコードは絶対別の方法で解決できるはずてか文字コード統一忘れてるだけなのでは--}}
         @endif
-    </li>{{-- ここのエンコードは絶対別の方法で解決できるはずてか文字コード統一忘れてるだけなのでは--}}
     <hr>
 @endforeach
 <form role="form" method="post" action="message_rooms">
