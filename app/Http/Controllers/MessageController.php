@@ -27,7 +27,7 @@ class MessageController extends Controller
         return redirect('message_rooms/'.$request->input('group_id'));
     }
     public function deleteMessage(Request $request){
-         Message::destroy($request->input('message_id'));
+         Message::where('id',$request->input('message_id'))->delete();
          return redirect('message_rooms/'.$request->input('group_id'));
     }
 }

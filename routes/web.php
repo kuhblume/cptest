@@ -19,13 +19,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
 //messageルート/////////////////////////////////////////////////////////////////
 Route::get('/message','GroupController@show');
 
 //message_roomsルート///////////////////////////////////////////////////////////{id?}は任意のパラメーター
 Route::post('/message_rooms/{id}','MessageController@create');
-Route::get('/message_rooms/{id}','MessageController@show');
+Route::get('/message_rooms/{id}','MessageController@show')->middleware('joining');
 Route::delete('/message_rooms/{id}','MessageController@deleteMessage');
 Route::delete('/message_rooms/{id}','CreateRoomController@quitRoom');
 //create_message_roomルート/////////////////////////////////////////////////////
