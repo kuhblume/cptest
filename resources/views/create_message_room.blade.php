@@ -11,7 +11,8 @@
 <p>※一人だけ選択すると個人チャットになり、グループ名は固定されます</p>
 </nav>
 <br>
-<form role="form" method="post" action="create_message_room">
+<form role="form" method="post" action="{{ route('createRoom') }}">
+    @method('post')
     <input type="hidden" name="_token" value="{{csrf_token()}}">{{-- CSRF対策 --}}
     <input type="hidden" name="users[]" value="{{Auth::user()->id}}">
     @foreach($users as $user)

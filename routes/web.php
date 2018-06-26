@@ -17,17 +17,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('home', 'HomeController@index')->name('home');
 
 //messageルート/////////////////////////////////////////////////////////////////
-Route::get('/message','GroupController@show');
-
+Route::get('message','GroupController@show')->name('showGroup');
 //message_roomsルート///////////////////////////////////////////////////////////{id?}は任意のパラメーター
-Route::post('/message_rooms/{id}','MessageController@create');
-Route::get('/message_rooms/{id}','MessageController@show')->middleware('joining');
-Route::delete('/message_rooms/{id}','MessageController@deleteMessage');
-Route::delete('/message_rooms/{id}','CreateRoomController@quitRoom');
+Route::post('message_rooms','MessageController@create')->name('createMessage');
+Route::get('message_rooms/{id}','MessageController@show')->name('showMessage');
+Route::delete('message_rooms','MessageController@delete')->name('deleteMessage');
+//Route::delete('message_rooms/{id?}','CreateRoomController@quitRoom')->name('deleteRoom');
 //create_message_roomルート/////////////////////////////////////////////////////
-Route::post('/create_message_room','CreateRoomController@create');
-Route::get('/create_message_room','CreateRoomController@show');
-//Route::post('/create_message_room','CreateRoomController@val');
+Route::post('create_message_room','CreateRoomController@create')->name('createRoom');
+Route::get('create_message_room','CreateRoomController@show')->name('showRoom');
+//Route::post('create_message_room','CreateRoomController');
+

@@ -27,11 +27,11 @@ class GroupController extends Controller
 //        return view('message',['joins'=>Join::with('groups')->get()]);
 //        $joins = Join::where('user_id', Auth::user()->id)->get();//join::ログイン中のユーザーの所属を取得(複数あり)
 //        return view('message',['joins'=>$joins]);
-          if(isset(Auth::user()->id)) {
+//          if(isset(Auth::user()->id)) {
               $groups = User::find(Auth::user())->first()->groups;//userを一つだけ取得するためにfirstを使った
               return view('message',['groups'=>$groups]);//取り出した一つのユーザー（ログイン中のユーザー）の所属するグループを取得
-          }else{
+//          }else{
             //非ログイン時の処理
-          }
+//          }
     }
 }

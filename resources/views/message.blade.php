@@ -7,9 +7,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-light navbar-laravel">
     <h1>あなたの参加しているルーム</h1>
-</nav>
 <br>
     @foreach($groups as $group)
         <li><a href='message_rooms/{{$group->id}}'>{{$group->group_name}}</a></li>

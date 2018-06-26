@@ -17,17 +17,20 @@ class MessagesTableSeeder extends Seeder
             [
                 'group_id'      => '1',
                 'user_id'       => '1',
-                'message_body' => 'test1'
+                'message_body' => 'test1',
+                'image_path'=>'',
             ],
             [
                 'group_id'      => '1',
                 'user_id'       => '2',
-                'message_body' => 'test2'
+                'message_body' => 'test2',
+                'image_path'=>'',
             ],
             [
                 'group_id'      => '3',
                 'user_id'       => '2',
-                'message_body' => 'test3'
+                'message_body' => 'test3',
+                'image_path'=>'',
             ],
         ]);
     }

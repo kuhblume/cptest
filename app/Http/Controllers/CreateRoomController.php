@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Join;
 use App\Group;
-use App\Message;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -24,7 +23,7 @@ class CreateRoomController extends Controller
             $new_group->save();
         }elseif(count($join_users)==1){
             //誰も選択していないときの処理////バリデーションではじくほうがいいかもしれない
-            return redirect('message');
+            return redirect('create_message_room');
         }else{
             $new_group->group_name =$request->input('room_name');//ここでグループ名決定ページに飛ばせばいいのでは
             $new_group->save();
@@ -37,7 +36,7 @@ class CreateRoomController extends Controller
         }
         return redirect('message');
     }
-    public function quitRoom(Request $request){
+    public function quitRoom(Request $request,$id){
 //        Join::destroy($request->input('group_id'));
 //        Join::destroy(User::where('group_id','group_id')->id);
 //        Join::destroy(Group::find($request->input('group_id'))->first()->join->where('user_id',Auth::user()));
@@ -45,7 +44,7 @@ class CreateRoomController extends Controller
 //        if($request->input('is_room')){
             Join::where('user_id', Auth::user()->id)->where('group_id',$request->input('group_id'))->first()->delete();
 
-        return redirect('message');
+        return redirect('create_message_room');
 //        }else{
 //            return redirect('message_rooms/'.$request->input('group_id'));
 //        }
